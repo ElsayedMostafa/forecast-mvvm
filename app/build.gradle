@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: "androidx.navigation.safeargs"
+
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.forecastmvvm"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def nav_version = "2.1.0-rc01"
+    def room_version = "2.2.0-alpha02"
+    def lifecycle_version = "2.0.0"
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //my
+    //nav
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    //room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    kapt "androidx.room:room-compiler:$room_version"
+    //life cycle
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    //kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    //legcy support
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    // Gson
+    implementation "com.google.code.gson:gson:2.8.5"
+    //coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0-RC2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0-RC2'
+    //retrofit
+    //implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    //Kodein
+    implementation 'org.kodein.di:kodein-di-generic-jvm:6.3.3'
+    implementation "org.kodein.di:kodein-di-framework-android-x:6.3.3"
+
+    //    // Better dateTime-time support even on older Android versions
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+    //gropie recyclerview
+    implementation "com.xwray:groupie:2.4.0"
+    implementation "com.xwray:groupie-kotlin-android-extensions:2.4.0"
+    implementation "com.xwray:groupie-databinding:2.4.0"
+    //preference
+    implementation "androidx.preference:preference:1.1.0-rc01"
+    implementation "androidx.preference:preference-ktx:1.1.0-rc01"
+    //location
+    implementation "com.google.android.gms:play-services-location:17.0.0"
+    //new matrial
+    implementation 'com.google.android.material:material:'
+
+    //
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
